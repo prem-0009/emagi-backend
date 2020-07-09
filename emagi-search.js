@@ -1,24 +1,21 @@
-const symbols = require('./emagi-symbols.js');
-const words = require('./emagi-words.js');
+const symbols = require("./emagi-symbols.js");
+const words = require("./emagi-words.js");
 
+const searchEmojis = function (text) {
+  let result = [];
 
-//not working
-const searchEmojis = function(text){
-    let result = [];
-    
-  for ( let i = 0; i < words.length; i++){
-    if ( words[i].includes(text)){
-    //   console.log(words[i]);
-        let index = words.indexOf(words[i]);
-//       console.log(index)
-        result.push(symbols[index])
-    } else {
-
+  //loop through the words
+  for (const word of words) {
+    //if text is present in words
+    if (word.includes(text)) {
+      //find index of that text in the array words
+      let index = words.indexOf(word);
+      //push the symbol with that index to result array
+      result.push(symbols[index]);
     }
   }
-    return result;
-}
 
-
+  return result;
+};
 
 module.exports = searchEmojis;
